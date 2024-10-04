@@ -11,6 +11,7 @@ import {
 import { getRandomEmoji, DiscordRequest } from "./utils.js";
 import { getShuffledOptions, getResult } from "./game.js";
 
+
 const app = express();
 
 const PORT = process.env.PORT || 3000;
