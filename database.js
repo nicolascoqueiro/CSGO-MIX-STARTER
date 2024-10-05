@@ -72,9 +72,23 @@ function getPlayerInfo(discordId, callback) {
     });
 }
 
+// Função para verificar se um jogador existe
+const existingPlayer = (discordId) => {
+    return new Promise((resolve, reject) => {
+        db.get(`SELECT * FROM players WHERE discord_id = ?`, [discordId], (err, row) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(row);
+            }
+        });
+    });
+};
+
 // Exportar as funções para serem usadas no app.js
 export {
     registerPlayer,
     updatePlayerPoints,
-    getPlayerInfo
+    getPlayerInfo,
+    existingPlayer // Adicionando a exportação da função existingPlayer
 };
